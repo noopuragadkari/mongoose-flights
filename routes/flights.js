@@ -10,7 +10,7 @@ router.get('/new', flightCtrl.new);
 
 router.post('/', flightCtrl.create);
 
-// http://localhost:3000/movies/index
+// http://localhost:3000/flights/index
 router.get('/', flightCtrl.index);
 
 module.exports = router;
