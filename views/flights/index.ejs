@@ -17,6 +17,7 @@
             <th scope="col">Airport</th>
             <th scope="col">Flight Number</th>
             <th scope="col">Departure Date</th>
+            <th scope="col">Flight Details</th>
         </thead>
         <tbody>
         <% flights.forEach(flight => { %>
@@ -25,6 +26,7 @@
                 <td><%= flight.airport %></td>
                 <td><%= flight.flightNo %></td>
                 <td><%= flight.departs %></td>
+                <td><a href="/flights/<%= flight._id %>">DETAILS</a></td>
             </tr>
         <% }) %>
         </tbody>

@@ -12,6 +12,11 @@ function index(req, res){
       })
   });
 }
+function show(req, res) {
+  Flight.findById(req.params.id, function(err, flight) {
+    res.render('flights/show', { title: 'Flight Details', flight });
+  });
+}
 
 function create(req, res){
  
@@ -30,5 +35,6 @@ function create(req, res){
 module.exports = {
   new: newFlight,
   create,
-  index
+  index,
+  show
 };
