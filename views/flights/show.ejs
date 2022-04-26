@@ -26,7 +26,7 @@
         </div>
         <div class="row">
             <dt class="col-sm-3">Departure Date:</dt>
-            <dd class="col-sm-9"><%= flight.departs %></dd>
+            <dd class="col-sm-9"><%= flight.departs.toLocaleDateString() %></dd>
         </div>
     </section>
     <section class="marginTop">
@@ -56,7 +56,7 @@
                 <% flight.destinations.forEach(function(r) { %>
                     <tr>
                         <td><%= r.airport %></td>
-                        <td><%= r.arrival %></td>
+                        <td><%= r.arrival.toLocaleDateString() %></td>
                     </tr>
                 <% }); %>
             </tbody>

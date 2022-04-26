@@ -19,7 +19,6 @@ function show(req, res) {
 }
 
 function create(req, res){
- 
   // we create the flight object
   const  flight = new Flight(req.body);
   // we save the flight object to the db

@@ -13,16 +13,26 @@
     <h2>Enter Flight Details</h2>
     <form action="/flights" method="POST">
         <div class="col-6">
-            <label class="form-label">Airline</label>
-            <input type="text" class="form-control" name="airline"  placeholder="Enter Airline">
+            <select name="airline" class="form-select">
+                <option selected>Select Airline</option>
+                <option value="American">American</option>
+                <option value="Southwest">Southwest</option>
+                <option value="United">United</option>
+            </select>
         </div>
         <div class="col-6 marginTop">
-            <label class="form-label">Airport</label>
-            <input type="text" class="form-control" name="airport"  placeholder="Enter Airport">
+            <select name="airport" class="form-select">
+                <option>Select Airport</option>
+                <option value="AUS">AUS</option>
+                <option value="DFW">DFW</option>
+                <option value="DEN" selected>DEN</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>
         </div>
         <div class="col-6 marginTop">
             <label class="form-label">Flight Number</label>
-            <input type="text" class="form-control" name="flightNo"  placeholder="Enter FlightNumber">
+            <input type="number" class="form-control" name="flightNo"  placeholder="Enter FlightNumber" min="10" max="9999" required>
         </div>
         <div class="col-6 marginTop">
             <label class="form-label">Departure Date</label>
