@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ticketSchema = new Schema({
   seat: String,
   price: Number,
-  flight: Number
+  flight: {type: Schema.Types.ObjectId,ref: 'Flight',}
 }, {
   timestamps: true
 });

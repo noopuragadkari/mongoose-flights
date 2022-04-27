@@ -13,26 +13,12 @@ function index(req, res){
       })
   });
 }
-//function show(req, res) {
- // Flight.findById(req.params.id, function(err, flight) {
- //   res.render('flights/show', { title: 'Flight Details', flight });
- // });
-//}
-
 function show(req, res) {
-  Flight.findById(req.params.id)
-    .populate('tickets').exec(function(err, flight) {
-      Ticket.find(
-        {_id: {$nin: flight.tickets}},
-        function(err, tickets) {
-          console.log(tickets);
-          res.render('flights/show', {
-            title: 'Flight Details', flight, tickets
-          });
-        }
-      );
-    });
+  Flight.findById(req.params.id, function(err, flight) {
+    res.render('flights/show', { title: 'Flight Details', flight });
+  });
 }
+
 
 function create(req, res){
   // we create the flight object
