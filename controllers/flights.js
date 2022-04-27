@@ -1,5 +1,6 @@
 const Flight = require('../models/flight');
-
+// require the Ticket model
+const Ticket = require('../models/ticket');
 
 function newFlight(req, res) {
 res.render('flights/new');
@@ -12,10 +13,25 @@ function index(req, res){
       })
   });
 }
+//function show(req, res) {
+ // Flight.findById(req.params.id, function(err, flight) {
+ //   res.render('flights/show', { title: 'Flight Details', flight });
+ // });
+//}
+
 function show(req, res) {
-  Flight.findById(req.params.id, function(err, flight) {
-    res.render('flights/show', { title: 'Flight Details', flight });
-  });
+  Flight.findById(req.params.id)
+    .populate('tickets').exec(function(err, flight) {
+      Ticket.find(
+        {_id: {$nin: flight.tickets}},
+        function(err, tickets) {
+          console.log(tickets);
+          res.render('flights/show', {
+            title: 'Flight Details', flight, tickets
+          });
+        }
+      );
+    });
 }
 
 function create(req, res){
@@ -27,7 +43,8 @@ function create(req, res){
       console.log(flight);
       // if we save the movie object then return the user
       // to the index page
-      res.redirect('/flights')
+      //res.redirect('/flights')
+      res.redirect(`/flights/${flight._id}`);
   });
 }
 
