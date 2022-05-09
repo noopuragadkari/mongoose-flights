@@ -10,14 +10,15 @@
     <title>Ticket Details</title>
 </head>
 <body>
-    <form action="/flights/<%= id %>/tickets/new" method="POST">
+    <form action="/flights/<%=flightId%>/tickets" method="POST">
         <div class="col-6 form-group">
             <label class="form-label">Add Seat:</label>
-            <input type="text" class="form-control" name="seat" required pattern="[A-F][1-9]\d?  placeholder="Enter Seat">
+            <input type="text" class="form-control" name="seat" required  placeholder="Enter Seat">
         </div>
         <div class="col-6 form-group">
             <label class="form-label">Add Price:</label>
             <input type="number" class="form-control" name="price"  placeholder="Enter Price">
         </div>
+        <input type="submit" value="Make Ticket">
     </form>
 </body>

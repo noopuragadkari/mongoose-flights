@@ -13,12 +13,18 @@ function index(req, res){
       })
   });
 }
-function show(req, res) {
+// function show(req, res) {
+//   Flight.findById(req.params.id, function(err, flight) {
+//     res.render('flights/show', { title: 'Flight Details', flight });
+//   });
+// }
+function show(req, res){
   Flight.findById(req.params.id, function(err, flight) {
-    res.render('flights/show', { title: 'Flight Details', flight });
-  });
+      Ticket.find({flight: flight._id}, function(err, tickets) {
+          res.render('flights/show', {flight, tickets})
+      })
+  })
 }
-
 
 function create(req, res){
   // we create the flight object

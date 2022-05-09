@@ -47,6 +47,7 @@
         </form>
     </section>
     <section class="marginTop">
+        <h5>DESTINATION::</h5>
         <table class="table table-striped">
             <thead class="thead-dark">
                 <th scope="col">Aiport</th>
@@ -62,9 +63,31 @@
             </tbody>
         </table>
     </section>
-    <form action="/flights/<%= flight._id %>/tickets/new" method="POST">
-        <div class="col-6 marginTop">
-            <button type="submit" class="btn btn-primary">NEW TICKET</button>
-        </div>
-    </form>
+    <section>
+        <h5>TICKET::</h5>
+        <% if (tickets.length) { %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Seat</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% tickets.forEach(function(t) { %>
+                <tr>
+                  <td><%= t.seat %></td>
+                  <td>$<%= t.price %></td>
+                <td>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        <% } else { %>
+          <h5>No Ticketing Information Availiable</h5>
+        <% } %>
+    </section>
+    <a href="/flights/<%= flight._id %>/tickets/new" class="btn btn-primary">New Ticket</a>
+
 </body>
